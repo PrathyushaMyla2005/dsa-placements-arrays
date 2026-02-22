@@ -43,7 +43,7 @@ def moveZeroes(arr):
     # return updated array
     return arr
 # main
-arr = [0, 1, 0, 3, 12]
+arr = [0, 1, 0, 3, 12] 
 print(moveZeroes(arr))
 '''Time Complexity: O(n) where n is the number of elements in the array as we are iterating through the array once
 Space Complexity: O(1) as we are using only a constant amount of extra space for

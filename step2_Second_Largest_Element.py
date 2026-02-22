@@ -40,7 +40,7 @@ def getElements(arr, n):# Function to find the second smallest and second larges
     second_small = float('inf')  # Initialize second smallest to positive infinity
     for i in range(n):  # Iterate through the array to find the smallest and second smallest elements   
         if arr[i] < small:  # If the current element is smaller than the smallest
-            second_small = small  # Update second smallest to the previous smallest
+            second_small = small   # Update second smallest to the previous smallest
             small = arr[i]  # Update smallest to the current element
         elif small < arr[i] < second_small:  # If the current element is between smallest and second smallest
             second_small = arr[i]  # Update second smallest to the current element
