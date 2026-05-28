@@ -19,3 +19,22 @@ print(second_largest(arr))
 '''tc: O(n) where n is the number of elements in the array
 sc: O(1) as we are using only a constant amount of space to store the max and second_max
 '''
+'''second smallest element in an array
+Given an array of integers, find the second smallest element in the array.
+Example 1:'''
+def second_smallest(arr):
+    min = arr[0] # Initialize min to the first element of the array
+    second_min = float('inf') # Initialize second_min to positive infinity
+    for i in range(1,len(arr)):# Iterate through the array starting from the second element
+        if arr[i] < min: # If the current element is smaller than min
+            second_min = min # Update second_min to the current min
+            min = arr[i] # Update min to the current element
+        elif arr[i] < second_min and arr[i] != min : # If the current element is smaller than second_min and not equal to min
+            second_min = arr[i] # Update second_min to the current element
+    return second_min # Return the second smallest element
+# Test the function
+arr = [1, 2, 3, 4, 5]
+print(second_smallest(arr))
+'''tc: O(n) where n is the number of elements in the array
+sc: O(1) as we are using only a constant amount of space to store the min and second_min
+'''
