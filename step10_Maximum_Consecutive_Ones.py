@@ -53,3 +53,6 @@ arr = [1,1,0,1,1,1]
 print("Array :", arr)
 
 print("Maximum Consecutive Ones :", max_consecutive_ones(arr))
+'''tc: O(n) where n is the number of elements in the array
+sc: O(1) as we are using only a constant amount of space to store the
+'''
