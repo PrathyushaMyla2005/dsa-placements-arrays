@@ -1,40 +1,118 @@
-''' find the second largest element in an array 
-Given an array of integers, find the second largest element in the array.
-Example 1:
-Input: [1, 2, 3, 4, 5]
-Output: 4'''
+"""
+Find the Second Largest and Second Smallest Element in an Array
+
+Time Complexity  : O(n)
+Space Complexity : O(1)
+
+Approach:
+---------
+Traverse the array only once.
+
+For Second Largest:
+    - Keep track of the largest element.
+    - Keep track of the second largest element.
+
+For Second Smallest:
+    - Keep track of the smallest element.
+    - Keep track of the second smallest element.
+"""
+
+
+# ---------------- SECOND LARGEST ---------------- #
+
 def second_largest(arr):
-    max = arr[0] # Initialize max to the first element of the array
-    second_max = float('-inf') # Initialize second_max to negative infinity
-    for i in range(1,len(arr)): # Iterate through the array starting from the second element
-        if arr[i] > max[0]: # If the current element is greater than max
-            second_max = max # Update second_max to the current max
-            max = arr[i] # Update max to the current element
-        elif arr[i] > second_max and arr[i] != max : # If the current element is greater than second_max and not equal to max
-            second_max = arr[i] # Update second_max to the current element
-    return second_max # Return the second largest element
-# Test the function
-arr = [1, 2, 3, 4, 5]
-print(second_largest(arr))
-'''tc: O(n) where n is the number of elements in the array
-sc: O(1) as we are using only a constant amount of space to store the max and second_max
-'''
-'''second smallest element in an array
-Given an array of integers, find the second smallest element in the array.
-Example 1:'''
+
+    # If the array has fewer than 2 elements,
+    # there is no second largest element.
+    if len(arr) < 2:
+        return None
+
+    # Assume the first element is the largest.
+    largest = arr[0]
+
+    # Initialize second largest to negative infinity.
+    # This ensures any real number will be larger.
+    second_largest = float('-inf')
+
+    # Traverse the array starting from the second element.
+    for i in range(1, len(arr)):
+
+        # Case 1:
+        # Current element is greater than the largest.
+        if arr[i] > largest:
+
+            # Previous largest becomes second largest.
+            second_largest = largest
+
+            # Update largest.
+            largest = arr[i]
+
+        # Case 2:
+        # Current element is not the largest,
+        # but it is greater than the current second largest.
+        # Also avoid duplicates.
+        elif arr[i] > second_largest and arr[i] != largest:
+
+            second_largest = arr[i]
+
+    # If second largest is still -infinity,
+    # it means no second largest exists.
+    if second_largest == float('-inf'):
+        return None
+
+    return second_largest
+
+
+# ---------------- SECOND SMALLEST ---------------- #
+
 def second_smallest(arr):
-    min = arr[0] # Initialize min to the first element of the array
-    second_min = float('inf') # Initialize second_min to positive infinity
-    for i in range(1,len(arr)):# Iterate through the array starting from the second element
-        if arr[i] < min: # If the current element is smaller than min
-            second_min = min # Update second_min to the current min
-            min = arr[i] # Update min to the current element
-        elif arr[i] < second_min and arr[i] != min : # If the current element is smaller than second_min and not equal to min
-            second_min = arr[i] # Update second_min to the current element
-    return second_min # Return the second smallest element
-# Test the function
+
+    # If array has fewer than 2 elements,
+    # second smallest does not exist.
+    if len(arr) < 2:
+        return None
+
+    # Assume first element is the smallest.
+    smallest = arr[0]
+
+    # Initialize second smallest to positive infinity.
+    second_smallest = float('inf')
+
+    # Traverse from the second element.
+    for i in range(1, len(arr)):
+
+        # Case 1:
+        # Current element is smaller than the smallest.
+        if arr[i] < smallest:
+
+            # Previous smallest becomes second smallest.
+            second_smallest = smallest
+
+            # Update smallest.
+            smallest = arr[i]
+
+        # Case 2:
+        # Current element is greater than smallest,
+        # but smaller than second smallest.
+        # Ignore duplicates.
+        elif arr[i] < second_smallest and arr[i] != smallest:
+
+            second_smallest = arr[i]
+
+    # If second smallest is still infinity,
+    # it means no second smallest exists.
+    if second_smallest == float('inf'):
+        return None
+
+    return second_smallest
+
+
+# ---------------- DRIVER CODE ---------------- #
+
 arr = [1, 2, 3, 4, 5]
-print(second_smallest(arr))
-'''tc: O(n) where n is the number of elements in the array
-sc: O(1) as we are using only a constant amount of space to store the min and second_min
-'''
+
+print("Array :", arr)
+
+print("Second Largest :", second_largest(arr))
+
+print("Second Smallest :", second_smallest(arr))
